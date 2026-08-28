@@ -1,16 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Imagem preview</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>{{ titulo }}</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+
 </head>
+
 <body>
+
     <main>
-        <h1>{{titulo}}</h1>
-        <img src="{{img_url}}" class="imagem" alt="">
-        <p>{{descricao}}</p>
+
+        <h1>{{ titulo }}</h1>
+
+
+        {% if media_type == "image" %}
+
+            <img
+                src="{{ media_url }}"
+                class="imagem"
+                alt="{{ titulo }}"
+            >
+
+        {% elif media_type == "video" %}
+
+            <div class="video-container">
+
+                <iframe
+                    src="{{ media_url }}"
+                    title="{{ titulo }}"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+
+            </div>
+
+        {% endif %}
+
+
+        <p>{{ descricao }}</p>
+
     </main>
+
 </body>
+
 </html>

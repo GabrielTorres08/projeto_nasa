@@ -257,3 +257,13 @@ main p {
     border: none;
     border-radius: 5px;
 }
+
+@media (max-width: 600px) {
+
+    .video-container {
+        padding: 3px;
+        border-width: 2px;
+        border-radius: 7px;
+    }
+
+}
