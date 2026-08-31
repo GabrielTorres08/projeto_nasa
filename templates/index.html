@@ -37,19 +37,39 @@
 
         {% elif media_type == "video" %}
 
-            <div class="video-container">
+    {% if ".mp4" in media_url.lower() %}
 
-                <iframe
+        <div class="video-container">
+
+            <video controls playsinline class="video">
+                <source
                     src="{{ media_url }}"
-                    title="{{ titulo }}"
-                    frameborder="0"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen
-                ></iframe>
+                    type="video/mp4"
+                >
 
-            </div>
+                Seu navegador não suporta a reprodução deste vídeo.
 
-        {% endif %}
+            </video>
+
+        </div>
+
+    {% else %}
+
+        <div class="video-container">
+
+            <iframe
+                src="{{ media_url }}"
+                title="{{ titulo }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+
+        </div>
+
+    {% endif %}
+
+{% endif %}
 
 
         <p>{{ descricao }}</p>
